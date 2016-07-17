@@ -32,9 +32,7 @@ function scrape_urls($url){
 
     $html = file_get_html($url);
 
-    $img = $html->find('#manga-page',0);
-
-    $img_url = $img->src;
+    $img_url = $html->find('#manga-page',0)->src;
 
     return $img_url;
 }
@@ -54,11 +52,7 @@ if(!empty($_POST['url'])){
         $urls = page_urls_fn($url);
         foreach ($urls as $url) {
             $img_urls[] = scrape_urls($url);
-            // print_r($img_urls);
-            // die;
         }
-        // print_r($img_urls);
-        // die;
 
     }else{
         $errors = 'Error retriving urls.';
@@ -99,15 +93,6 @@ if(!empty($_POST['url'])){
                 <?php foreach($img_urls as $img_url) { ?>
                     <div><?=$img_url?></div>
                 <?php } ?>
-
-                <div>http://google.com</div>
-                <div>http://google.com</div>
-                <div>http://google.com</div>
-                <div>http://google.com</div>
-                <div>http://google.com</div>
-                <div>http://google.com</div>
-                <div>http://google.com</div>
-                <div>http://google.com</div>
             </div>
         </div>
 
