@@ -1,6 +1,14 @@
 <?php
 require('simple_html_dom.php');
 
+function page_title_fn($url){
+
+    $html = file_get_html($url);
+
+    $page_title = $html->find('.btn-reader-chapter',0)->find('span',0)->plaintext;
+
+    return $page_title;
+}
 function page_urls_fn($url){
 
     $html = file_get_html($url);
@@ -37,6 +45,7 @@ function scrape_urls($url){
     return $img_url;
 }
 
+$page_title = false;
 $page_urls = [];
 $img_urls = [];
 $errors = '';
@@ -48,6 +57,8 @@ if(!empty($_POST['url'])){
     $url = $_POST['url'];
 
     if (filter_var($url, FILTER_VALIDATE_URL) !== false){
+
+        $page_title = page_title_fn($url);
 
         $urls = page_urls_fn($url);
         foreach ($urls as $url) {
@@ -95,10 +106,10 @@ if(!empty($_POST['url'])){
 
         <br>
 
-        <div class="box-results row">
+        <div class="box-results row border <?=empty($page_title)?'hide':''?>">
             <div class="" style="padding: 0 15px">
-                <small class="pull-right">3 images</small>
-                <h4>TItle of the Page</h4>
+                <small class="pull-right"><?=count($img_urls)?> images</small>
+                <h4><?=$page_title?></h4>
             </div>
 
             <ul class="list-group " style="margin-bottom: 0px;">
