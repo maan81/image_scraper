@@ -1,32 +1,5 @@
 <?php
-function retrive_urls($url){
-	return [];
-}
-function scrape_urls($url){
-	return [];
-}
-function error(){
-
-}
-
-
-$page_urls = [];
-$img_urls = [];
-
-if($_POST){
-
-	$url = $_POST['url'];
-
-	if (filter_var($url, FILTER_VALIDATE_URL) !== false){
-		$urls = retrive_urls($url);
-		foreach ($urls as $key => $value) {
-			scrape_urls();
-		}
-	// }else{
-	// 	error();
-	}
-
-}
+require('simple_html_dom.php');
 
 ?>
 <!doctype html>
