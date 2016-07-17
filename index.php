@@ -13,6 +13,10 @@ function page_urls_fn($url){
 
     $html = file_get_html($url);
 
+    // $page_title = page_title_fn($html);
+    // echo $page_title;
+    // die;
+
     $li = $html->find('.btn-reader-page',0);
 
     $a_all = $li->find('a');
@@ -48,7 +52,7 @@ function scrape_urls($url){
 $page_title = false;
 $page_urls = [];
 $img_urls = [];
-$errors = '';
+$errors = false;
 $url = '';
 
 
@@ -77,6 +81,12 @@ if(!empty($_POST['url'])){
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <style type="text/css">
+        .border{
+            border:1px solid #ccc;
+            border-radius:5px;
+        }
+    </style>
 </head>
 <body>
 
@@ -86,9 +96,9 @@ if(!empty($_POST['url'])){
             <h2 class="text-center">Image Scraper</h2>
         </div>
 
-        <div class="box-body row" style="padding: 15px">
+        <div class="box-body row border" style="padding: 15px;">
 
-            <div class="alert alert-danger <?=$errors?'hide':''?>"><?=$errors?></div>
+            <div class="alert alert-danger <?=$errors?'':'hide'?>"><?=$errors?></div>
 
             <form role="form" class="form-horizontal" method="post">
                 <div class="form-group form-group-lg " style="padding: 0 5px">
