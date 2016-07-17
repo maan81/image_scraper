@@ -86,7 +86,7 @@ if(!empty($_POST['url'])){
             <form class="form-inline" role="form" method="post">
                 <div class="form-group">
                     <label for="url">Url :</label>
-                    <input type="text" class="form-control" id="url" name="url" value="<?=url?>">
+                    <input type="text" class="form-control" id="url" name="url" value="<?=$url?>">
                 </div>
                 <input type="submit" class="btn btn-default" name="submit" value="Submit" />
             </form>
