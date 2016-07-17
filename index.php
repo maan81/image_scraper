@@ -71,34 +71,44 @@ if(!empty($_POST['url'])){
 
     <div class="container">
 
-        <br>
+        <div class="header">
+            <h2 class="text-center">Image Scraper</h2>
+        </div>
 
-        <div class="row">
+        <div class="box-body row" style="padding: 15px">
 
-            <div class="alert alert-danger"><?=$errors?></div>
+            <div class="alert alert-danger <?=$errors?'hide':''?>"><?=$errors?></div>
 
-            <form class="form-inline" role="form" method="post">
-                <div class="form-group">
-                    <label for="url">Url :</label>
-                    <input type="text" class="form-control" id="url" name="url" value="<?=$url?>">
+            <form role="form" class="form-horizontal" method="post">
+                <div class="form-group form-group-lg " style="padding: 0 5px">
+                    <label class="col-md-1 control-label">URL</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" id="url" name="url" value="<?=$url?>">
+                    </div>
+                    <div class="col-md-2" style="padding: 0px 15px;">
+                        <input type="submit" class="btn btn-default" name="submit" value="Submit" style="width: 100%; height: 45px;">
+                    </div>
                 </div>
-                <input type="submit" class="btn btn-default" name="submit" value="Submit" />
             </form>
+
         </div>
 
         <br>
 
-        <div class="row">
-            <div>
-                <?php foreach($img_urls as $img_url) { ?>
-                    <div><?=$img_url?></div>
-                <?php } ?>
+        <div class="box-results row">
+            <div class="" style="padding: 0 15px">
+                <small class="pull-right">3 images</small>
+                <h4>TItle of the Page</h4>
             </div>
+
+            <ul class="list-group " style="margin-bottom: 0px;">
+                <?php foreach($img_urls as $img_url) { ?>
+                    <li class="list-group-item"><?=$img_url?></li>
+                <?php } ?>
+            </ul>
         </div>
 
     </div>
-
-
 
     <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
     <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
