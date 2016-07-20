@@ -80,6 +80,7 @@ if(!empty($_POST['url'])){
 <!doctype html>
 <html>
 <head>
+    <title>Image Scraper</title>
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <style type="text/css">
         .padding-top-bottom {
@@ -90,49 +91,66 @@ if(!empty($_POST['url'])){
 <body>
 
     <div class="container" style="margin-left: auto; margin-right: auto; width: 750px;">
+
         <div id="query">
+
             <div class="alert alert-danger <?=$errors?'':'hide'?>"><?=$errors?></div>
-                <form class="form-inline row padding-top-bottom" method="post">
-                    <div class="form-group col-md-12 padding-top-bottom">
-                        <label style="padding: 10px 0px;" class="col-md-2 control-label" for="url">
-                            ReadMe Links :
-                        </label>
-                        <div style="padding-left: 0; padding-right: 0" class="col-md-10">
-                            <input type="text" style="width: 100%" class="form-control" id="url" name="url" placeholder="http://example.com">
-                        </div>
+
+            <form class="form-inline row padding-top-bottom" method="post">
+
+                <div class="form-group col-md-12 padding-top-bottom form-inputs">
+                    <label style="padding: 10px 0px;" class="col-md-2 control-label" for="url">
+                        ReadMe Links :
+                    </label>
+                    <div style="padding-left: 0; padding-right: 0" class="col-md-10">
+                        <input type="text" style="width: 100%" class="form-control" id="url"
+                                name="url" placeholder="http://example.com" value="<?=$url?>">
                     </div>
-                    <div class="col-md-12 padding-top-bottom">
-                        <input type="submit" value="Submit" name="submit" class="btn btn-default col-md-2 center-block" style="float: none;">
-                    </div>
-                </form>
-            </div>
-            <hr>
-            <div id="result" class="<?=empty($page_title)?'hide':''?>">
-                <div class="row">
-                    <div class="col-md-12 padding-top-bottom">
-                        <small class="pull-right" style="margin-top: 10px; margin-right: 5px">
-                            <?=count($img_urls)?> image(s)
-                        </small>
-                        <h4 class="text-center"><strong><?=$page_title?></strong></h4>
-                    </div>
-                    <div class="col-md-12 padding-top-bottom">
-                        <textarea id="urls"
-                                style="height: 121px; background: transparent none repeat scroll 0px 0px;"
-                                readonly="readonly"
-                                class="col-md-12 form-control textarea"><?=implode(PHP_EOL, $img_urls)?></textarea>
-                    </div>
-                    <div class="col-md-12 padding-top-bottom">
-                        <button id="select_all" class="btn btn-default" style="margin-right: 10px;">
-                            Select All
-                        </button>
-                        <button id="copy" class="btn btn-default">
-                            Copy
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                </div><!-- /form-inputs -->
+
+                <div class="col-md-12 padding-top-bottom form-submit">
+                    <input type="submit" value="Submit" name="submit"
+                            class="btn btn-default col-md-2 center-block" style="float: none;">
+                </div><!-- /form-submit -->
+
+            </form>
+
+        </div><!-- /query -->
+
+        <hr>
+
+        <div id="result" class="<?=empty($page_title)?'hide':''?>">
+
+            <div class="row">
+
+                <div class="col-md-12 padding-top-bottom result-header">
+                    <small class="pull-right" style="margin-top: 10px; margin-right: 5px">
+                        <?=count($img_urls)?> image(s)
+                    </small>
+                    <h4 class="text-center"><strong><?=$page_title?></strong></h4>
+                </div><!-- /result-header -->
+
+                <div class="col-md-12 padding-top-bottom result-list">
+                    <textarea id="urls"
+                            style="height: 350px; background: transparent none repeat scroll 0px 0px; resize:vertical;"
+                            readonly="readonly"
+                            class="col-md-12 form-control textarea"><?=implode(PHP_EOL, $img_urls)?></textarea>
+                </div><!-- /result-list -->
+
+                <div class="col-md-12 padding-top-bottom result-buttons">
+                    <button id="select_all" class="btn btn-default" style="margin-right: 10px;">
+                        Select All
+                    </button>
+                    <button id="copy" class="btn btn-default">
+                        Copy
+                    </button>
+                </div><!-- /result-buttons -->
+
+            </div><!-- /row -->
+
+        </div><!-- /result -->
+
+    </div><!-- /container -->
 
 
 
