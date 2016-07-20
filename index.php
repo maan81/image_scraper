@@ -5,7 +5,7 @@ function page_title_fn($url){
 
     $html = file_get_html($url);
 
-    $page_title = $html->find('.btn-reader-chapter',0)->find('span',0)->plaintext;
+    $page_title = $html->find('.btn-reader-chapter',0)->find('a',0)->plaintext;
 
     return $page_title;
 }
