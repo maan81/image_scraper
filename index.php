@@ -109,7 +109,7 @@ if(!empty($_POST['url'])){
                 </div><!-- /form-inputs -->
 
                 <div class="col-md-12 padding-top-bottom form-submit">
-                    <input type="submit" value="Submit" name="submit"
+                    <input type="submit" value="Submit" name="submit" id="submit"
                             class="btn btn-default col-md-2 center-block" style="float: none;">
                 </div><!-- /form-submit -->
 
@@ -159,7 +159,7 @@ if(!empty($_POST['url'])){
 
     <script type="text/javascript">
         $('#submit').click(function(){
-
+            $('body').css('cursor','wait');
         });
 
         /* http://stackoverflow.com/questions/22581345/click-button-copy-to-clipboard-using-jquery */
