@@ -13,10 +13,6 @@ function page_urls_fn($url){
 
     $html = file_get_html($url);
 
-    // $page_title = page_title_fn($html);
-    // echo $page_title;
-    // die;
-
     $li = $html->find('.btn-reader-page',0);
 
     $a_all = $li->find('a');
@@ -70,7 +66,7 @@ if(!empty($_POST['url'])){
         }
 
     }else{
-        $errors = 'Error retriving urls.';
+        $errors = 'Error retriving the urls.';
     }
 
 }
